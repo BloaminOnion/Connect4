@@ -1,0 +1,8 @@
+# ignoring GIMP files
+*.xcf
+
+# ignoring compiled Java files
+*.class
+
+# ignoring text files used for personal tracking
+*.txt

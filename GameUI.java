@@ -117,11 +117,11 @@ public class GameUI extends JPanel {
             for(int j=0; j<6; j++) {
                 if(game.gridAt(i,j)=='r'){
                     //based on grid index, calculate the pixel location to draw the red image
-                    g.drawImage(red, 100*i+100,100*j+140, null); // draw a red circle
+                    g.drawImage(red, 100*i,100*j+40, null); // draw a red circle
                 }
                 else if(game.gridAt(i,j)=='y'){
                     //based on grid index, calculate the pixel location to draw the yellow image
-                    g.drawImage(yellow, 100*i+100,100*j+140, null); // draw a yellow circle
+                    g.drawImage(yellow, 100*i,100*j+40, null); // draw a yellow circle
                 }
             }
         }

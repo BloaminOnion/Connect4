@@ -77,9 +77,10 @@ public class GameUI extends JPanel {
                 if(e.getX()<boardX || e.getY() < boardY)
                     return;
                 //calculate which column of the grid was clicked
-                int i = (int) (7*((e.getX()-boardX)/(boardWidth-boardX)));
+                //int i = (int) (7*((e.getX()-boardX)/(boardWidth-boardX)));
                 //take action and update grid 2D array based on where they clicked
-                panelMouseClicked(i);
+                //panelMouseClicked(i);
+                panelMouseClicked(3);
             }
         });
 

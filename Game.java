@@ -81,7 +81,7 @@ public class Game {
         }
         //update grid with new play based on who's turn it is
         //grid[columnToPlay][boardRows - piecesInColumn[columnToPlay]] = turn;
-        grid[6][5] = turn;
+        grid[columnToPlay][3] = turn;
         //update free spots
         //freeSpots--;
         //update number of pieces in that column

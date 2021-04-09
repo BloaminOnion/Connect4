@@ -74,13 +74,13 @@ public class GameUI extends JPanel {
                 double boardX = 0; // the horizontal gap left of the grid
                 double boardY = 40; // the vertical gap above the grid
                 //return if clicked outside the grid area
-                if(e.getX()<boardX || e.getY() < boardY)
+                if(e.getX()<boardX || e.getY()<boardY)
                     return;
                 //calculate which column of the grid was clicked
-                //int i = (int) (7*((e.getX()-boardX)/(boardWidth-boardX)));
+                int i = (int) (7*((e.getX()-boardX)/(boardWidth-boardX)));
                 //take action and update grid 2D array based on where they clicked
-                //panelMouseClicked(i);
-                panelMouseClicked(3);
+                panelMouseClicked(i);
+                //panelMouseClicked(3);
             }
         });
 

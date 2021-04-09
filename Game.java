@@ -80,7 +80,6 @@ public class Game {
             return false; //bail out if not available
         }
         //update grid with new play based on who's turn it is
-        //grid[columnToPlay][boardRows - piecesInColumn[columnToPlay]] = turn;
         grid[columnToPlay][boardRows - 1 - piecesInColumn[columnToPlay]] = turn;
         //update free spots
         //freeSpots--;
@@ -127,13 +126,12 @@ public class Game {
                 //randomly pick a position
                 aiColumn = (int) (Math.random() * boardColumns);
             }while(piecesInColumn[aiColumn]>=boardRows); //keep trying if this spot was taken
-            grid[0][0] = 'y'; 
             //update grid with new play, computer is always y
-            //grid[aiColumn][boardRows - piecesInColumn[aiColumn]] = 'y';
+            grid[aiColumn][boardRows - 1 - piecesInColumn[aiColumn]] = 'y'; 
             //update free spots
             //freeSpots--;
             //update number of pieces in that column
-            //piecesInColumn[aiColumn]++;
+            piecesInColumn[aiColumn]++;
         }
         else{
             //change turns

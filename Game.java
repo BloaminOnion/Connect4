@@ -43,7 +43,7 @@ public class Game {
         }
         //start with 42 free spots and decrement by one every time a spot is taken
         freeSpots = boardRows * boardColumns;
-        //reset number of pieces in each column
+        //reset tracker for number of pieces in a column
         piecesInColumn = new int[boardColumns];
         //r always starts
         turn = 'r';

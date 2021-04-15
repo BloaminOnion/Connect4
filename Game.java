@@ -43,6 +43,8 @@ public class Game {
         }
         //start with 42 free spots and decrement by one every time a spot is taken
         freeSpots = boardRows * boardColumns;
+        //reset number of pieces in each column
+        piecesInColumn = new int[boardColumns];
         //r always starts
         turn = 'r';
     }
@@ -103,7 +105,7 @@ public class Game {
      */
     public boolean doChecks() {
         //check if there's a winner or tie ?
-        String winnerMessage = checkGameWinner(grid);
+        String winnerMessage = checkGameWinner(grid, turn);
         if (!winnerMessage.equals("None")) {
             gui.gameOver(winnerMessage);
             newGame(false);
@@ -154,10 +156,55 @@ public class Game {
      * @param grid 2D array of characters representing the game board
      * @return String indicating the outcome of the game: "Red wins" or "Yellow wins" or "Tie" or "None"
      */
-    public String checkGameWinner(char [][]grid){
+    public String checkGameWinner(char [][]grid, char turn){
         String result = "None";
-        //Student code goes here ...
+
+        boolean isWinner = false;
         
+        // Checking for vertical wins
+        for (int i = 0 ; i < boardColumns ; i++) {
+        	for (int j = 0 ; j < boardRows - 3 ; j++) {
+        		if (grid[i][j] == turn && grid[i][j+1] == turn && grid[i][j+2] == turn && grid[i][j+3] == turn) {
+        			isWinner = true;
+        		}
+        	}
+        }
+        
+        // Checking for horizontal wins
+        for (int i = 0 ; i < boardColumns - 3 ; i++) {
+        	for (int j = 0 ; j < boardRows ; j++) {
+        		if(grid[i][j] == turn && grid[i+1][j] == turn && grid[i+2][j] == turn && grid[i+3][j] == turn) {
+        			isWinner = true;
+        		}
+        	}
+        }
+        
+        // Checking for diagonal wins
+        for (int i = 0 ; i < boardColumns - 3 ; i++) {
+        	for (int j = 0 ; j < boardRows - 3 ; j++) {
+        		if (grid[i][j] == turn && grid[i+1][j+1] == turn && grid[i+2][j+2] == turn && grid[i+3][j+3] == turn) {
+        			isWinner = true;
+        		}
+        	}
+        }
+        
+        for (int i = 3 ; i < boardColumns ; i++) {
+        	for (int j = 3 ; j < boardRows ; j++) {
+        		if (grid[i][j] == turn && grid[i-1][j-1] == turn && grid[i-2][j-2] == turn && grid[i-3][j-3] == turn) {
+        			isWinner = true;
+        		}
+        	}
+        }
+        
+        
+        if (isWinner) {
+        	if (turn == 'r') {
+        		result = "Red wins!";
+        	} else {
+        		result = "Yellow wins!";
+        	}
+        }
+        	
         if (freeSpots <= 0) {
         	result = "All spots filled, start a new game.";
         }
